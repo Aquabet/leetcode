@@ -26,7 +26,9 @@ public:
                 bfs.push(front->right);
                 ans += to_string(front->val)+',';
             }
-            else(ans += "NULL,");
+            else{
+            	ans += "null,";
+			}
             bfs.pop();
         }
             ans.resize(ans.size() - 1);
@@ -35,19 +37,25 @@ public:
 
     vector<int> strtoint(string data,int p1) {
         vector<int> ans;
+        int flag = 1;
+        if(data[p1] == '-') {
+            flag = -1;
+            p1++;
+        }
         ans.push_back(0);
         while(data[p1] !=',' && p1 < data.size()) {
             ans[0] *= 10;
             ans[0] += data[p1] - '0';
             p1++;
         }
+        ans[0]*=flag;
         ans.push_back(p1);
         return ans;
     }
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
-        if(data[0] == 'n') 
+        if(data[0] == 'n'||data.length() == 0) 
 	    return nullptr;
         TreeNode* root = new TreeNode(strtoint(data,0)[0]);
         int p = strtoint(data,0)[1]+1;
@@ -66,7 +74,6 @@ public:
                     que.pop();
                 }
                 continue;
-//                cout<<"null ";
             }
             vector<int>ans1 = strtoint(data,p);
             TreeNode* rbq = que.front();
@@ -81,7 +88,6 @@ public:
                     que.push(rbq->right);
                     que.pop();
                 }
-//            cout<<ans1[0]<<" ";
             p = ans1[1]+1;
         }
         return root;
