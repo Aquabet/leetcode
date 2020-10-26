@@ -7,7 +7,6 @@ using namespace std;
 
 class Solution {
 public:
-
     int videoStitching(vector<vector<int>>& clips, int T) {
         vector<int> dp(T + 1, INT_MAX - 1);
         dp[0] = 0;
