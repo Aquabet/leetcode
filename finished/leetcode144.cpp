@@ -12,10 +12,19 @@ struct TreeNode {
 //前序遍历 根-左-右
 class Solution {
 public:
+
+    void find(TreeNode* p,vector<int> &ans) {
+        ans.push_back(p->val);
+        if(p->left != nullptr)
+        find(p->left,ans);
+        if(p->right != nullptr)
+        find(p->right,ans);
+    }
+
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<int> ans;
-        stack<TreeNode*> sta;
-        sta.push(root);
-        
+        vector<int> v;
+        if(root == nullptr) return v;
+        find(root,v);
+        return v;
     }
 };
