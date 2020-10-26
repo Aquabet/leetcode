@@ -54,7 +54,7 @@ public:
         int dir = 1;
         queue<TreeNode*> que;
         que.push(root);
-        while(!que.empty() && p > data.length()) {
+        while(!que.empty() && p < data.length()) {
             if(data[p] == 'n'){
                 p += 5;
                 TreeNode* rbq = que.front();
