@@ -4,64 +4,41 @@ using namespace  std;
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        if(wordList.size() == 0) {
-            return 0;
+        unordered_set<string> wordDict(wordList.begin(), wordList.end());
+        if (wordDict.find(endWord) == wordDict.end()){
+            return 0;//Not FOUND 404
         }
-        int length = wordList.size();
-        bool mapp[length][length];
-        int beginplace;
-        int endplace;
-        int last[length] = {-1};
-        bool read[length] = {false};
-        memset(mapp,false,sizeof(mapp));
-        for(int i = 0; i < length; i++) {
-            if(beginWord == wordList[i]) {
-                beginplace = i;
+        unordered_set<string> beginSet{beginWord};
+        unordered_set<string> endSet{endWord};
+        int step = 1;
+        for (; !beginSet.empty();){
+            unordered_set<string> tempSet;
+            ++step;
+            for (auto s : beginSet) {
+                wordDict.erase(s);
             }
-            if(endWord == wordList[i]) {
-                endplace = i;
-            }
-            for(int j = 0; j < length; j++) {
-                int flag = 0;
-                for(int k = 0; k < wordList[0].length(); k++) {
-                    if(wordList[i][k] != wordList[j][k]) {
-                        if(flag == 1) {
-                            mapp[i][j] = false;
-                            mapp[j][i] = false;
-                            goto break1;
+            for (auto s : beginSet) {
+                for (int i = 0; i < s.size(); ++i){
+                    string str = s;
+                    for (char c = 'a'; c <= 'z'; ++c){
+                        str[i] = c;
+                        if (wordDict.find(str) == wordDict.end()){
+                            continue;
                         }
-                        else {
-                            flag = 1;
+                        if (endSet.find(str) != endSet.end()){
+                            return step;
                         }
+                        tempSet.insert(str);
                     }
                 }
-                break1 :
+            }
+            if (tempSet.size() < endSet.size()){
+                beginSet = tempSet;
+            } else {
+                beginSet = endSet;
+                endSet = tempSet;
             }
         }
-
-        queue<int> find;
-        find.push(beginplace);
-        read[beginplace] = true;
-        while(find.empty() == false || read[endplace] == false) {
-            for(int i = 0; i < length; i++) {
-                int head = find.front();
-                if(mapp[head][i] == true && read[i] == false) {
-                    find.push(i);
-                    last[i] = head;
-                    read[i] = true;
-                }
-                find.pop();
-            }
-        }
-        if(last[endplace] == -1) return 0;
-        else {
-            int ans = 0;
-            int p = endplace;
-            while(p != beginplace) {
-                p = last[p];
-                ans++;
-            }
-            return ans;
-        }
+        return 0;
     }
 };
