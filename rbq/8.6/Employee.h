@@ -5,7 +5,7 @@ using namespace std;
 
 class Employee {
 public:
-    Employee(int , string );
+    Employee(int id, string name);
     void setName(string);
     string getName();
 protected:
