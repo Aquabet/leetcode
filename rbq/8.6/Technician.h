@@ -4,9 +4,9 @@
 #include<Employee.h>
 using namespace std;
 
-class Technician : public Employee {
+class Technician : virtual public Employee {
 public:
-    Technician(int ,string);
+    Technician(int grade, string projectName, int id, string name);
     void setProjectName(string);
     string getProjectName();
     int getGrade;

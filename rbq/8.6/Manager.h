@@ -4,9 +4,9 @@
 #include<Employee.h>
 using namespace std;
 
-class Manager: public Employee {
+class Manager: virtual public Employee {
 public:
-    Manager(string);
+    Manager(string department);
     string getDepartment();
 protected:
     string department;

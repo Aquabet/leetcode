@@ -2,11 +2,13 @@
 #define SALESMANAGER_H
 #include<string>
 #include<Employee.h>
-#include<Saleman.h>
+#include<Salesman.h>
 #include<Manager.h>
 
-class SalesManager : public Saleman, public Manager {
-    
+class SalesManager : public Salesman, public Manager {
+public:
+    SalesManager();
+    void trainSalesman();
 };
 
 #endif
