@@ -1,6 +1,7 @@
 ﻿#include<iostream>
 #include<string>
-#include<Technician.h>
+#include"Employee.h"
+#include"Technician.h"
 using namespace std;
 
 Technician::Technician(int grade, string projectName, int id, string name) : grade(grade), projectName(projectName), Employee(id,name) {}

@@ -1,6 +1,6 @@
-#include<Employee.h>
 #include<iostream>
 #include<string>
+#include"Employee.h"
 using namespace std;
 
 Employee::Employee(int id, string name) : id(id), name(name) {}

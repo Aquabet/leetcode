@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
-#include<Salesman.h>
+#include"Employee.h"
+#include"Salesman.h"
 using namespace std;
 
 Salesman::Salesman(double SalesVolume, int id, string name) : SalesVolume(SalesVolume), Employee(id,name) {}
