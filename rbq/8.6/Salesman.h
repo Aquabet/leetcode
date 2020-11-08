@@ -2,10 +2,11 @@
 #define SALESMAN_H
 #include<string>
 #include<Employee.h>
+using namespace std;
 
 class Salesman : virtual public Employee {
 public:
-    Salesman(double SalesVolume);
+    Salesman(double SalesVolume, int id, string name);
     double getSalesVolume();
 private:
     double SalesVolume;

@@ -6,7 +6,7 @@ using namespace std;
 
 class Manager: virtual public Employee {
 public:
-    Manager(string department);
+    Manager(string department, int id, string name);
     string getDepartment();
 protected:
     string department;
