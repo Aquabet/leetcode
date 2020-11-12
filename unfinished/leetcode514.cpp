@@ -6,7 +6,7 @@ public:
     int step(int& a, vector<int >& v) {
         int next = lower_bound(v.begin(),v.end(),a) - v.begin();
         int before = (next == 0) ? (v.size() -1) : (next - 1);
-        return min()
+        return -1;
         ;
     }
 
