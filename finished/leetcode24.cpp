@@ -15,23 +15,21 @@ public:
         ListNode* p = head;
         int sum = 0;
         while(p != nullptr) {
+            p = p -> next;
             sum++;
         }
         sum /= 2;
-        ListNode* p = head;
-        ListNode* fakehead = new ListNode(0, head);
-        ListNode* tail = fakehead;
-        ListNode* newhead = fakehead;
+        ListNode* newhead = new ListNode(0,head);
+        ListNode* finishp = newhead;
+        ListNode* newp = head;
         while(sum--) {
-            newhead = tail ->next ->next ->next;
-            ListNode* rbq = tail ->next;
-            tail ->next = tail ->next ->next;
-            tail ->next ->next = rbq;
-            tail = rbq;
-            rbq ->next = nullptr;
+            ListNode* rbq = newp ->next;
+            newp ->next = rbq ->next;
+            finishp ->next = rbq;
+            rbq ->next = newp;
+            finishp = newp;
+            newp = newp ->next;
         }
-        head = fakehead ->next;
-        delete fakehead;
-        return head;
+        return newhead ->next;
     }
 };
