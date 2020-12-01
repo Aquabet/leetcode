@@ -2,7 +2,7 @@
 using namespace std;
 class Solution {
 public:
-    int findRotateSteps(string ring, string key) {
-
+    vector<int> diStringMatch(string S) {
+        vector<int > ;
     }
 };
