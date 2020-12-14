@@ -8,6 +8,7 @@ public:
         if (wordDict.find(endWord) == wordDict.end()){
             return 0;//Not FOUND 404
         }
+        
         unordered_set<string> beginSet{beginWord};
         unordered_set<string> endSet{endWord};
         int step = 1;
