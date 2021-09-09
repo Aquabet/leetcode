@@ -101,11 +101,6 @@ TreeNode* deserialize(string data) {
     return parse(data, ptr);
 }
 
-class Solution {
-public:
-
-};
-
 #ifdef LOCAL
 
 int main() {
