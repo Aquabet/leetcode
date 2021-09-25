@@ -20,8 +20,8 @@ public:
         for(int i = plansize; i >= 0; i--) {
             int planNum = plans[i][0];
             if(planNum == 1) {
-                ans[plans[i][1]] <<= 1;
-                xNum[plans[i][1]] <<= 1;
+                ans[plans[i][1]] *= 2;
+                xNum[plans[i][1]] *= 2;
             }
             else if(planNum == 2) {
                 int mappasize = mappa[plans[i][1]].size();
