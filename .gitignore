@@ -2,4 +2,4 @@
 /.vscode/
 test.cpp
 rbq.cpp
-test.in
+*.in
